@@ -7,7 +7,7 @@ const SEVERITIES = ["critical", "high", "medium", "low"] as const;
 export default defineTool({
   name: "create_bug",
   title: "Create bug",
-  description: "File a new bug report in Triage as the signed-in user.",
+  description: "File a new bug report in PIXORA as the signed-in user.",
   inputSchema: {
     title: z.string().trim().min(1).max(200).describe("Short summary of the bug."),
     description: z.string().trim().min(1).max(5000).describe("Detailed description of the issue."),

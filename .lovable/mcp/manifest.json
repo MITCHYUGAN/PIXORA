@@ -19,7 +19,7 @@
       {
         "name": "list_bugs",
         "title": "List bugs",
-        "description": "List bug reports in Triage, optionally filtered by status, severity, or a text search.",
+        "description": "List bug reports in PIXORA, optionally filtered by status, severity, or a text search.",
         "annotations": {
           "readOnlyHint": true,
           "idempotentHint": true,
@@ -96,7 +96,7 @@
       {
         "name": "create_bug",
         "title": "Create bug",
-        "description": "File a new bug report in Triage as the signed-in user.",
+        "description": "File a new bug report in PIXORA as the signed-in user.",
         "annotations": {
           "readOnlyHint": false,
           "destructiveHint": false,
@@ -157,7 +157,7 @@
       {
         "name": "update_bug",
         "title": "Update bug",
-        "description": "Update the status, severity, or assignee of an existing bug in Triage.",
+        "description": "Update the status, severity, or assignee of an existing bug in PIXORA.",
         "annotations": {
           "readOnlyHint": false,
           "destructiveHint": false,
@@ -215,7 +215,7 @@
       {
         "name": "add_comment",
         "title": "Add comment",
-        "description": "Add a comment to a bug in Triage as the signed-in user.",
+        "description": "Add a comment to a bug in PIXORA as the signed-in user.",
         "annotations": {
           "readOnlyHint": false,
           "destructiveHint": false,
