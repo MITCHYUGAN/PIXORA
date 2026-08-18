@@ -8,7 +8,7 @@ const SEVERITIES = ["critical", "high", "medium", "low"] as const;
 export default defineTool({
   name: "list_bugs",
   title: "List bugs",
-  description: "List bug reports in Triage, optionally filtered by status, severity, or a text search.",
+  description: "List bug reports in PIXORA, optionally filtered by status, severity, or a text search.",
   inputSchema: {
     status: z.enum(STATUSES).optional().describe("Filter by bug status."),
     severity: z.enum(SEVERITIES).optional().describe("Filter by bug severity."),

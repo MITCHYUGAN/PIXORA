@@ -5,7 +5,7 @@ import { supabaseForUser } from "../supabase";
 export default defineTool({
   name: "add_comment",
   title: "Add comment",
-  description: "Add a comment to a bug in Triage as the signed-in user.",
+  description: "Add a comment to a bug in PIXORA as the signed-in user.",
   inputSchema: {
     bug: z.string().trim().min(1).describe("Tracking ID or UUID of the bug."),
     content: z.string().trim().min(1).max(5000).describe("Comment text."),

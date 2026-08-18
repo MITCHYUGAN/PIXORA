@@ -8,7 +8,7 @@ const SEVERITIES = ["critical", "high", "medium", "low"] as const;
 export default defineTool({
   name: "update_bug",
   title: "Update bug",
-  description: "Update the status, severity, or assignee of an existing bug in Triage.",
+  description: "Update the status, severity, or assignee of an existing bug in PIXORA.",
   inputSchema: {
     bug: z.string().trim().min(1).describe("Tracking ID or UUID of the bug."),
     status: z.enum(STATUSES).optional(),

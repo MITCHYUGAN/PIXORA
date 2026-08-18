@@ -67,7 +67,7 @@ export default function OAuthConsent() {
       <div className="w-full max-w-[420px] border border-border rounded-md p-8 space-y-5">
         <div className="flex items-center gap-2">
           <StackedLogo size={16} />
-          <span className="text-[14px] font-bold text-foreground tracking-[0.08em] uppercase">Triage</span>
+          <span className="text-[14px] font-bold text-foreground tracking-[0.08em] uppercase">PIXORA</span>
         </div>
 
         {error ? (
@@ -83,7 +83,7 @@ export default function OAuthConsent() {
                 Connect {details.client?.name ?? "an app"} to your account
               </h1>
               <p className="text-[13px] text-muted-foreground">
-                This lets {details.client?.name ?? "the client"} read and manage bugs in Triage as you.
+                This lets {details.client?.name ?? "the client"} read and manage bugs in PIXORA as you.
               </p>
             </div>
             <div className="flex gap-2">

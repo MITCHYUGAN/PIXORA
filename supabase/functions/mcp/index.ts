@@ -64,7 +64,7 @@ var SEVERITIES = ["critical", "high", "medium", "low"];
 var list_bugs_default = defineTool({
   name: "list_bugs",
   title: "List bugs",
-  description: "List bug reports in Triage, optionally filtered by status, severity, or a text search.",
+  description: "List bug reports in PIXORA, optionally filtered by status, severity, or a text search.",
   inputSchema: {
     status: z.enum(STATUSES).optional().describe("Filter by bug status."),
     severity: z.enum(SEVERITIES).optional().describe("Filter by bug severity."),
@@ -126,7 +126,7 @@ var SEVERITIES2 = ["critical", "high", "medium", "low"];
 var create_bug_default = defineTool3({
   name: "create_bug",
   title: "Create bug",
-  description: "File a new bug report in Triage as the signed-in user.",
+  description: "File a new bug report in PIXORA as the signed-in user.",
   inputSchema: {
     title: z3.string().trim().min(1).max(200).describe("Short summary of the bug."),
     description: z3.string().trim().min(1).max(5e3).describe("Detailed description of the issue."),
@@ -168,7 +168,7 @@ var SEVERITIES3 = ["critical", "high", "medium", "low"];
 var update_bug_default = defineTool4({
   name: "update_bug",
   title: "Update bug",
-  description: "Update the status, severity, or assignee of an existing bug in Triage.",
+  description: "Update the status, severity, or assignee of an existing bug in PIXORA.",
   inputSchema: {
     bug: z4.string().trim().min(1).describe("Tracking ID or UUID of the bug."),
     status: z4.enum(STATUSES2).optional(),
@@ -205,7 +205,7 @@ import { z as z5 } from "npm:zod@^3.25.76";
 var add_comment_default = defineTool5({
   name: "add_comment",
   title: "Add comment",
-  description: "Add a comment to a bug in Triage as the signed-in user.",
+  description: "Add a comment to a bug in PIXORA as the signed-in user.",
   inputSchema: {
     bug: z5.string().trim().min(1).describe("Tracking ID or UUID of the bug."),
     content: z5.string().trim().min(1).max(5e3).describe("Comment text.")
@@ -232,10 +232,10 @@ var add_comment_default = defineTool5({
 // src/lib/mcp/index.ts
 var projectRef = "wyeghrvdpulvlghfpvdp";
 var mcp_default = defineMcp({
-  name: "triage",
-  title: "Triage",
+  name: "pixora",
+  title: "PIXORA",
   version: "0.1.0",
-  instructions: "Tools for Triage, a team bug tracker. Use `list_bugs` to browse or search bugs, `get_bug` for full detail plus comments, `create_bug` to file a report, `update_bug` to change status/severity/assignee, and `add_comment` to discuss a bug. Bugs are referenced by tracking ID (e.g. BUG-1234) or UUID.",
+  instructions: "Tools for PIXORA, a team bug tracker. Use `list_bugs` to browse or search bugs, `get_bug` for full detail plus comments, `create_bug` to file a report, `update_bug` to change status/severity/assignee, and `add_comment` to discuss a bug. Bugs are referenced by tracking ID (e.g. BUG-1234) or UUID.",
   auth: auth.oauth.issuer({
     issuer: `https://${projectRef}.supabase.co/auth/v1`,
     acceptedAudiences: "authenticated"
