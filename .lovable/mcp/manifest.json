@@ -11,9 +11,9 @@
   },
   "mcp": {
     "server": {
-      "name": "triage",
+      "name": "pixora",
       "version": "0.1.0",
-      "title": "Triage"
+      "title": "PIXORA"
     },
     "tools": [
       {
