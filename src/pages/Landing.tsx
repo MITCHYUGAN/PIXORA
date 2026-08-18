@@ -37,7 +37,7 @@ const Landing = () => {
         <div className="mx-auto flex h-[56px] max-w-[1200px] items-center justify-between">
           <Link to="/" className="flex items-center gap-2 -ml-0.5">
             <StackedLogo size={16} />
-            <span className="text-[14px] font-bold text-foreground tracking-[0.08em] uppercase">Triage</span>
+            <span className="text-[14px] font-bold text-foreground tracking-[0.08em] uppercase">PIXORA</span>
           </Link>
           <div className="flex items-center gap-2">
             <button
@@ -70,10 +70,10 @@ const Landing = () => {
             {/* Left column — text */}
             <div className="relative z-[3] flex-1 min-w-0 max-w-[540px]">
               <h1 className="text-[clamp(2rem,4vw,3.2rem)] font-[500] leading-[1.08] tracking-[-0.04em] text-foreground max-w-[540px]">
-                Bug tracking for teams that ship fast
+                Issue tracking for teams that ship fast
               </h1>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground max-w-[420px]">
-                Purpose-built for engineering teams. Triage, track, and resolve issues without slowing down.
+                Purpose-built for engineering teams. Capture, prioritize, and resolve issues without slowing down.
               </p>
               <div className="mt-10 flex items-center gap-4">
                 <Link to="/auth">
@@ -134,13 +134,13 @@ const Landing = () => {
                   </div>
                   <div className="flex-1">
                     {[
-                      { priority: "bg-destructive", id: "TRG-142", title: "w-[180px]", status: "bg-warning" },
-                      { priority: "bg-destructive", id: "TRG-139", title: "w-[220px]", status: "bg-destructive" },
-                      { priority: "bg-warning", id: "TRG-138", title: "w-[160px]", status: "bg-primary" },
-                      { priority: "bg-primary", id: "TRG-135", title: "w-[200px]", status: "bg-success" },
-                      { priority: "bg-muted-foreground/30", id: "TRG-131", title: "w-[140px]", status: "bg-primary" },
-                      { priority: "bg-warning", id: "TRG-128", title: "w-[190px]", status: "bg-warning" },
-                      { priority: "bg-primary", id: "TRG-125", title: "w-[170px]", status: "bg-success" },
+                      { priority: "bg-destructive", id: "PIX-142", title: "w-[180px]", status: "bg-warning" },
+                      { priority: "bg-destructive", id: "PIX-139", title: "w-[220px]", status: "bg-destructive" },
+                      { priority: "bg-warning", id: "PIX-138", title: "w-[160px]", status: "bg-primary" },
+                      { priority: "bg-primary", id: "PIX-135", title: "w-[200px]", status: "bg-success" },
+                      { priority: "bg-muted-foreground/30", id: "PIX-131", title: "w-[140px]", status: "bg-primary" },
+                      { priority: "bg-warning", id: "PIX-128", title: "w-[190px]", status: "bg-warning" },
+                      { priority: "bg-primary", id: "PIX-125", title: "w-[170px]", status: "bg-success" },
                     ].map((row, i) => (
                       <div key={i} className={`relative flex items-center gap-3 px-4 h-9 border-b border-border transition-colors`}>
                         {i === 1 && (
@@ -228,7 +228,7 @@ const Landing = () => {
             <div className="grid grid-cols-1 md:grid-cols-3">
               {[
                 {
-                  title: "Priority triage",
+                  title: "Priority ranking",
                   desc: "Four severity levels. SLA deadlines. One glance tells you what to fix next — and when you're out of time.",
                   graphic: "bars",
                 },
@@ -360,7 +360,7 @@ const Landing = () => {
         <div className="mx-auto max-w-[1200px] px-6 py-6 flex items-center justify-between">
           <div className="flex items-center gap-2 -ml-0.5">
             <StackedLogo size={16} />
-            <span className="text-[12px] font-bold text-foreground uppercase tracking-[0.08em]">Triage</span>
+            <span className="text-[12px] font-bold text-foreground uppercase tracking-[0.08em]">PIXORA</span>
           </div>
           <span className="text-[12px] text-muted-foreground">© {new Date().getFullYear()}</span>
         </div>
