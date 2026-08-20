@@ -39,6 +39,23 @@ const Landing = () => {
             <StackedLogo size={16} />
             <span className="text-[14px] font-bold text-foreground tracking-[0.08em] uppercase">PIXORA</span>
           </Link>
+
+          {/* Center links */}
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#how-it-works" className="text-[13px] text-foreground/70 hover:text-foreground transition-colors">
+              How It Works
+            </a>
+            <a href="#features" className="text-[13px] text-foreground/70 hover:text-foreground transition-colors">
+              Features
+            </a>
+            <a href="#for-creatives" className="text-[13px] text-foreground/70 hover:text-foreground transition-colors">
+              For Creatives
+            </a>
+            <a href="#for-clients" className="text-[13px] text-foreground/70 hover:text-foreground transition-colors">
+              For Clients
+            </a>
+          </div>
+
           <div className="flex items-center gap-2">
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -48,16 +65,11 @@ const Landing = () => {
               <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             </button>
-            <Link to="/auth">
-              <button className="text-[13px] text-foreground/70 hover:text-foreground transition-colors h-8 px-3">
-                Log in
+            <a href="#waitlist">
+              <button className="text-[13px] h-8 px-4 bg-foreground text-background hover:bg-foreground/90 transition-colors">
+                Join waitlist
               </button>
-            </Link>
-            <Link to="/auth">
-              <button className="text-[13px] h-8 px-3 border border-foreground/40 text-foreground hover:bg-foreground hover:text-background transition-colors">
-                Sign up
-              </button>
-            </Link>
+            </a>
           </div>
         </div>
       </nav>
@@ -69,19 +81,30 @@ const Landing = () => {
           <div className="pt-[52px] pb-16 relative flex">
             {/* Left column — text */}
             <div className="relative z-[3] flex-1 min-w-0 max-w-[540px]">
-              <h1 className="text-[clamp(2rem,4vw,3.2rem)] font-[500] leading-[1.08] tracking-[-0.04em] text-foreground max-w-[540px]">
-                Issue tracking for teams that ship fast
-              </h1>
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground max-w-[420px]">
-                Purpose-built for engineering teams. Capture, prioritize, and resolve issues without slowing down.
+              <p className="text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-muted-foreground mb-5">
+                Built for African creatives · Powered by AI + Blockchain
               </p>
-              <div className="mt-10 flex items-center gap-4">
-                <Link to="/auth">
+              <h1 className="text-[clamp(2.2rem,4.5vw,3.6rem)] font-[500] leading-[1.08] tracking-[-0.04em] text-foreground max-w-[560px]">
+                Your work deserves to outlast any platform.
+              </h1>
+              <p className="mt-5 text-[17px] md:text-[18px] leading-[1.5] text-foreground max-w-[460px]">
+                Get paid. Get proof. <span className="text-primary">Build legacy.</span>
+              </p>
+              <p className="mt-5 text-[14px] leading-[1.7] text-muted-foreground max-w-[440px]">
+                Pixora is where photographers, videographers, and designers find clients, deliver work, and get paid — with every agreement, file, and transaction stored permanently on the blockchain and summarized by AI. No disputes. No ghosting. No data loss.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a href="#waitlist">
                   <button className="group relative inline-flex items-center gap-2 px-6 py-3 text-[14px] font-medium bg-foreground text-background transition-all duration-200 hover:bg-foreground/90">
-                    Get started free
+                    Join the waitlist
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </button>
-                </Link>
+                </a>
+                <a href="#how-it-works">
+                  <button className="group relative inline-flex items-center gap-2 px-6 py-3 text-[14px] font-medium border border-foreground/40 text-foreground transition-all duration-200 hover:bg-foreground hover:text-background hover:border-foreground">
+                    See how it works
+                  </button>
+                </a>
               </div>
             </div>
 
