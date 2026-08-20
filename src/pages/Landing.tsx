@@ -1,31 +1,13 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Moon, Sun } from "lucide-react";
-import { Logo3D } from "@/components/Logo3D";
+import heroCreativeAsset from "@/assets/hero-creative.png.asset.json";
 import testimonialAvatarAsset from "@/assets/testimonial-avatar.jpg.asset.json";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 
 import { StackedLogo } from "@/components/StackedLogo";
 
-const LOGO_VARIANT = 1;
-const CUBE_SIZE = 840;
-const CUBE_OFFSET_X = -140;
-const CUBE_OFFSET_Y = -80;
-
 const Landing = () => {
   const { theme, setTheme } = useTheme();
-  const [cubeZoom, setCubeZoom] = useState(() => {
-    const w = window.innerWidth;
-    return w < 1024 ? 270 : 360;
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setCubeZoom(window.innerWidth < 1024 ? 270 : 360);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const isDark = theme === "dark";
   const diagonalLineColor = isDark ? "hsl(240 4% 26%" : "hsl(240 4% 80%";
@@ -108,78 +90,84 @@ const Landing = () => {
               </div>
             </div>
 
-            {/* Right column — 3D cube */}
-            <div className="hidden md:block flex-1 relative z-[1] pointer-events-none" style={{ minWidth: 0 }}>
-              <div className="absolute top-1/2 right-0 -translate-y-1/2" style={{ width: CUBE_SIZE, height: CUBE_SIZE, transform: `translate(${-CUBE_OFFSET_X}px, calc(-50% + ${CUBE_OFFSET_Y}px))` }}>
-                <Logo3D variant={LOGO_VARIANT} size={CUBE_SIZE} zoom={cubeZoom} bgHex={theme === "dark" ? "#0e0e10" : "#ffffff"} lineHex={theme === "dark" ? "#58585e" : "#c0c0c8"} />
-              </div>
+            {/* Right column — creative hero visual */}
+            <div className="hidden md:flex flex-1 items-center justify-center relative z-[1] pointer-events-none" style={{ minWidth: 0 }}>
+              <img
+                src={heroCreativeAsset.url}
+                alt="Camera and film — creative work preserved"
+                className="w-full max-w-[520px] h-auto object-contain opacity-95"
+                width={1024}
+                height={1024}
+              />
             </div>
           </div>
 
-          <div className="relative" style={{ overflow: "visible" }}>
+          <div className="relative">
             <div className="relative z-10 rounded-t-xl border border-b-0 border-border bg-card overflow-hidden">
               <div className="flex min-h-[420px]">
                 {/* Sidebar mock */}
                 <div className="w-[200px] border-r border-border p-3 flex flex-col gap-1 shrink-0">
                   <div className="flex items-center gap-2 px-2 h-8 mb-2">
-                    <div className="h-4 w-4 rounded bg-primary/30" />
-                    <div className="h-2 w-16 rounded-full bg-foreground/15" />
+                    <StackedLogo size={16} />
+                    <span className="text-[11px] font-bold uppercase tracking-[0.08em] text-foreground">PIXORA</span>
                   </div>
                   <div className="h-px bg-border" />
-                  {["w-20", "w-16", "w-24", "w-14"].map((w, i) => (
-                    <div key={i} className={`flex items-center gap-2 px-2 h-7 rounded ${i === 2 ? "bg-accent" : ""}`}>
+                  {[
+                    { label: "Projects", active: true },
+                    { label: "Deliveries", active: false },
+                    { label: "Contracts", active: false },
+                    { label: "Clients", active: false },
+                    { label: "Payments", active: false },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className={`flex items-center gap-2 px-2 h-8 rounded ${item.active ? "bg-accent" : ""}`}
+                    >
                       <div className="h-3 w-3 rounded bg-muted-foreground/15 shrink-0" />
-                      <div className={`h-1.5 ${w} rounded-full ${i === 2 ? "bg-foreground/25" : "bg-muted-foreground/15"}`} />
+                      <span className={`text-[11px] ${item.active ? "text-foreground" : "text-muted-foreground"}`}>
+                        {item.label}
+                      </span>
                     </div>
                   ))}
-                  <div className="h-px bg-border my-1" />
-                  <div className="px-2 mb-1">
-                    <div className="h-1.5 w-14 rounded-full bg-muted-foreground/10" />
+                  <div className="mt-auto p-2">
+                    <div className="h-7 rounded bg-primary/20 flex items-center justify-center">
+                      <span className="text-[10px] text-primary font-medium">New brief</span>
+                    </div>
                   </div>
-                  {["w-24", "w-16", "w-20"].map((w, i) => (
-                    <div key={`f-${i}`} className="flex items-center gap-2 px-2 h-7">
-                      <div className="h-2 w-2 rounded-full bg-primary/30 shrink-0" />
-                      <div className={`h-1.5 ${w} rounded-full bg-muted-foreground/12`} />
-                    </div>
-                  ))}
                 </div>
 
-                {/* Main content — issue list */}
+                {/* Main content — deliveries */}
                 <div className="flex-1 flex flex-col min-w-0">
-                  <div className="flex items-center gap-3 px-4 h-10 border-b border-border">
-                    <div className="h-2 w-10 rounded-full bg-muted-foreground/15" />
-                    <div className="h-2 w-8 rounded-full bg-muted-foreground/10" />
-                    <div className="h-2 w-12 rounded-full bg-muted-foreground/10" />
+                  <div className="flex items-center justify-between px-4 h-10 border-b border-border">
+                    <div className="flex items-center gap-3">
+                      <div className="h-2 w-20 rounded-full bg-foreground/15" />
+                      <div className="h-2 w-12 rounded-full bg-muted-foreground/10" />
+                    </div>
                     <div className="ml-auto flex gap-2">
                       <div className="h-5 w-5 rounded bg-muted-foreground/8" />
                       <div className="h-5 w-5 rounded bg-muted-foreground/8" />
                     </div>
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 p-3 space-y-2">
                     {[
-                      { priority: "bg-destructive", id: "PIX-142", title: "w-[180px]", status: "bg-warning" },
-                      { priority: "bg-destructive", id: "PIX-139", title: "w-[220px]", status: "bg-destructive" },
-                      { priority: "bg-warning", id: "PIX-138", title: "w-[160px]", status: "bg-primary" },
-                      { priority: "bg-primary", id: "PIX-135", title: "w-[200px]", status: "bg-success" },
-                      { priority: "bg-muted-foreground/30", id: "PIX-131", title: "w-[140px]", status: "bg-primary" },
-                      { priority: "bg-warning", id: "PIX-128", title: "w-[190px]", status: "bg-warning" },
-                      { priority: "bg-primary", id: "PIX-125", title: "w-[170px]", status: "bg-success" },
+                      { title: "Editorial — Lagos", client: "Acme Studios", status: "Verified", amount: "$2,400", statusColor: "bg-success", statusText: "text-success" },
+                      { title: "Brand Identity — Ngozi", client: "Ngozi & Co", status: "Delivered", amount: "$1,800", statusColor: "bg-warning", statusText: "text-warning" },
+                      { title: "Music Video — Afrobeat", client: "Pheelz", status: "In brief", amount: "$3,500", statusColor: "bg-primary", statusText: "text-primary" },
+                      { title: "Lookbook — Arewa", client: "Arewa Fashion", status: "Paid", amount: "$900", statusColor: "bg-success", statusText: "text-success" },
+                      { title: "Product Shoot — Kente", client: "Kente Co", status: "In review", amount: "$1,200", statusColor: "bg-destructive", statusText: "text-destructive" },
                     ].map((row, i) => (
-                      <div key={i} className={`relative flex items-center gap-3 px-4 h-9 border-b border-border transition-colors`}>
-                        {i === 1 && (
-                          <div className="absolute inset-0" style={{
-                            backgroundImage: `repeating-linear-gradient(-45deg, ${diagonalLineColor} / 0.3) 0px, ${diagonalLineColor} / 0.3) 1px, transparent 1px, transparent 6px)`,
-                          }} />
-                        )}
-                        <div className="h-3.5 w-3.5 rounded border border-border flex items-center justify-center shrink-0">
-                          <div className={`h-1.5 w-1.5 rounded-sm ${row.priority}`} />
+                      <div
+                        key={row.title}
+                        className={`flex items-center gap-3 px-3 py-2 rounded border ${i === 0 ? "border-border bg-accent/10" : "border-transparent hover:bg-muted/50"} transition-colors`}
+                      >
+                        <div className="h-10 w-10 rounded bg-muted-foreground/15 shrink-0" />
+                        <div className="flex-1 min-w-0 space-y-0.5">
+                          <span className="block text-[11px] font-medium text-foreground truncate">{row.title}</span>
+                          <span className="block text-[10px] text-muted-foreground truncate">{row.client}</span>
                         </div>
-                        <span className="text-[11px] text-muted-foreground font-mono shrink-0">{row.id}</span>
-                        <div className={`h-1.5 ${row.title} rounded-full bg-foreground/15`} />
-                        <div className="ml-auto flex items-center gap-2">
-                          <div className={`h-2 w-2 rounded-full ${row.status}`} />
-                          <div className="h-5 w-5 rounded-full bg-muted-foreground/10" />
-                        </div>
+                        <span className="text-[10px] text-muted-foreground shrink-0">{row.amount}</span>
+                        <span className={`text-[10px] font-medium ${row.statusText} shrink-0 w-14 text-right`}>{row.status}</span>
+                        <div className={`h-2 w-2 rounded-full ${row.statusColor} shrink-0`} />
                       </div>
                     ))}
                   </div>
@@ -188,24 +176,23 @@ const Landing = () => {
                 {/* Detail panel */}
                 <div className="w-[280px] border-l border-border shrink-0 hidden lg:flex flex-col">
                   <div className="flex items-center justify-between px-4 h-10 border-b border-border">
-                    <div className="h-2 w-20 rounded-full bg-foreground/15" />
+                    <div className="h-2 w-24 rounded-full bg-foreground/15" />
                     <div className="flex gap-1.5">
                       <div className="h-4 w-4 rounded bg-muted-foreground/10" />
                       <div className="h-4 w-4 rounded bg-muted-foreground/10" />
                     </div>
                   </div>
                   <div className="p-4 space-y-4">
-                    <div className="h-2 w-32 rounded-full bg-foreground/20" />
-                    <div className="space-y-1.5">
-                      <div className="h-1.5 w-full rounded-full bg-muted-foreground/10" />
-                      <div className="h-1.5 w-3/4 rounded-full bg-muted-foreground/10" />
+                    <div className="space-y-1">
+                      <div className="h-2 w-32 rounded-full bg-foreground/20" />
+                      <div className="h-1.5 w-20 rounded-full bg-muted-foreground/10" />
                     </div>
                     <div className="h-px bg-border" />
                     {[
-                      { label: "Status", value: "bg-warning" },
-                      { label: "Priority", value: "bg-destructive" },
-                      { label: "Assignee", value: "bg-primary" },
-                      { label: "Due", value: "bg-muted-foreground/15" },
+                      { label: "Status", value: "bg-success" },
+                      { label: "Client", value: "bg-primary" },
+                      { label: "Payment", value: "bg-warning" },
+                      { label: "Proof", value: "bg-info" },
                     ].map((prop) => (
                       <div key={prop.label} className="flex items-center justify-between">
                         <span className="text-[11px] text-muted-foreground">{prop.label}</span>
@@ -215,7 +202,7 @@ const Landing = () => {
                     <div className="h-px bg-border" />
                     <div className="space-y-3 pt-1">
                       <div className="h-1.5 w-14 rounded-full bg-muted-foreground/10" />
-                      {[1, 2].map((n) => (
+                      {[1, 2, 3].map((n) => (
                         <div key={n} className="flex gap-2">
                           <div className="h-5 w-5 rounded-full bg-muted-foreground/10 shrink-0 mt-0.5" />
                           <div className="space-y-1 flex-1">
